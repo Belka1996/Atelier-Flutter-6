@@ -24,17 +24,26 @@ class ListProduits extends StatelessWidget{
       body: ListView.builder(
         itemCount: produits.length,
         itemBuilder: (context, index) {
+          final produit= produits[index];
           return Card(
+            elevation: 3,
+            margin: EdgeInsets.all(10),
             child: ListTile(
-              title: Text(produits[index].nom),
-              subtitle: Text("${produits[index].prix} \$"),
+              title: Text(
+                produit.nom,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+              subtitle: Text("${produit.prix} \$"),
               trailing: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context)=>
-                        DetailsProduit(produit: produits[index]),
+                        DetailsProduit(produit: produit),
                     ),
                   );
                 },
